@@ -3,7 +3,7 @@ import axios from "axios";
 import "./SearchBar.css"
 //  import Request from '../apis/Request'
 const SearchBar = () => {
-    const [value, setValue] = useState('mobile')
+    const [value, setValue] = useState('adel')
     const [respons, setRespons] = useState([]);
     console.log(respons);
     const onFormHandel = (e) => {
@@ -34,9 +34,12 @@ const SearchBar = () => {
     }
     const loop = respons.map(el => {
         return <div
-            style={{border:'2px solid #777' ,margin:'10px'} }
+            style={{ border: '2px solid #777', margin: '10px' }}
+            
             key={el.pageid}>
-            {el.title}
+            <div style={{fontSize:"1.5rem" ,fontWeight:"bold"}}>
+              {el.title}
+            </div>
             {el.timestamp}
              
             <div>
