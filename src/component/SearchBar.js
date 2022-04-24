@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import "./SearchBar.css"
-//  import Request from '../apis/Request'
+ import Request from '../apis/Request'
 const SearchBar = () => {
     const [value, setValue] = useState('adel')
     const [respons, setRespons] = useState([]);
@@ -13,7 +13,7 @@ const SearchBar = () => {
     console.log('FRIST when run app');
     useEffect(() => {
         const search = async () => {
-          const {data}= await axios.get('https://en.wikipedia.org/w/api.php', {
+          const {data}= await Request.get('https://en.wikipedia.org/w/api.php', {
                 params: {
                     action: 'query',
                     list: 'search',
