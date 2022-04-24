@@ -6,8 +6,7 @@ const App = () => {
     return  (
         <div>
             <div className='searchbox'>
-                <SearchBar  />
-              
+                <SearchBar/>
             </div>
             <div className='main'>
                 <div className='detail'>

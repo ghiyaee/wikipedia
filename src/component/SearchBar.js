@@ -1,24 +1,19 @@
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
 import "./SearchBar.css"
  import Request from '../apis/Request'
 const SearchBar = () => {
-    const [value, setValue] = useState('adel')
+    const [value, setValue] = useState('')
     const [respons, setRespons] = useState([]);
+
     console.log(respons);
+
     const onFormHandel = (e) => {
         e.preventDefault()
         // props.value(value)
     }
-    console.log('FRIST when run app');
-    useEffect(() => {
-        const search = async () => {
-          const {data}= await Request.get('https://en.wikipedia.org/w/api.php', {
+      const search = async () => {
+          const {data}= await Request.get('api.php', {
                 params: {
-                    action: 'query',
-                    list: 'search',
-                    origin: '*',
-                    format: 'json',
                     srsearch: value
               }
           }); 
@@ -26,8 +21,9 @@ const SearchBar = () => {
                 setRespons(data.query.search)
             }     
         }
-        search();
-    }, [value])
+    console.log('FRIST  time when run app');
+
+    useEffect(() => {search()}, [value])
     
     const onInPutHadel = (e) => {
         setValue(e.target.value)
@@ -35,13 +31,11 @@ const SearchBar = () => {
     const loop = respons.map(el => {
         return <div
             style={{ border: '2px solid #777', margin: '10px' }}
-            
             key={el.pageid}>
             <div style={{fontSize:"1.5rem" ,fontWeight:"bold"}}>
-              {el.title}
+                 {el.title}
             </div>
-            {el.timestamp}
-             
+                 {el.timestamp}
             <div>
                  {el.snippet}
             </div>
@@ -56,7 +50,11 @@ const SearchBar = () => {
                         <label style={{fontFamily:"italic"}}>WikiPedia</label>
                     </div>
                     <div>
-                        <input type="text" onChange={onInPutHadel} value={value} />
+                            <input type="text"
+                                onChange={onInPutHadel}
+                                value={value}
+                                placeholder="search a like at  wikipedia"
+                            />
                     </div>
                 </div>
             </form>  
