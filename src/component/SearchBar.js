@@ -4,12 +4,8 @@ import "./SearchBar.css"
 const SearchBar = () => {
     const [value, setValue] = useState('')
     const [respons, setRespons] = useState([]);
-
-    console.log(respons);
-
     const onFormHandel = (e) => {
         e.preventDefault()
-        // props.value(value)
     }
       const search = async () => {
           const {data}= await Request.get('api.php', {
@@ -21,14 +17,12 @@ const SearchBar = () => {
                 setRespons(data.query.search)
             }     
         }
-    console.log('FRIST  time when run app');
-
     useEffect(() => {search()}, [value])
     
     const onInPutHadel = (e) => {
         setValue(e.target.value)
     }
-    const loop = respons.map(el => {
+    const renderlist = respons.map(el => {
         return <div
             style={{ border: '2px solid #777', margin: '10px' }}
             key={el.pageid}>
@@ -42,27 +36,27 @@ const SearchBar = () => {
             </div> })
     return (
         <>
-        <div className="search-bar">
-            <form onSubmit={onFormHandel}>
-                <div className="field">
-                    <div>
-                       <i className="wikipedia w massive  icon"></i>
-                        <label style={{fontFamily:"italic"}}>WikiPedia</label>
-                    </div>
-                    <div>
+            <div className="search-bar">
+                <form onSubmit={onFormHandel}>
+                    <div className="field">
+                        <div>
+                            <i className="wikipedia w massive teal icon"></i>
+                            <label style={{ fontFamily: "italic" }}>WikiPedia</label>
+                        </div>
+                        <div>
                             <input type="text"
                                 onChange={onInPutHadel}
                                 value={value}
                                 placeholder="search a like at  wikipedia"
                             />
+                        </div>
                     </div>
-                </div>
-            </form>  
+                </form>
             </div >
-            <div style={{border:'2px solid #eee' ,marginTop:'7px'}}>
-            {loop}
+            <div style={{ border: '2px solid #eee', marginTop: '7px' }}>
+                {renderlist}
             </div>
-            </>
+        </>
     )
 }
 export default SearchBar;
