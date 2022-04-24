@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.search-bar{
+    border:2px solid rgb(209, 205, 205);
+
+}
+.field{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+}
+.field label{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900;
+}
+.field input{
+    width: 90%;
+   padding: 10px;
+   margin-bottom: 10px;
+  box-shadow: 1px 2px 15px 3px rgb(175, 169, 169);
+  border: none;
+ 
+}

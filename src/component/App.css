@@ -1,0 +1,19 @@
+.searchbox{
+    margin: 5px auto;
+    width: 90%;
+}
+
+.main{
+    display: flex;
+    margin-top: 15px;
+    /* justify-content: space-between; */
+    width: 95%;
+    margin: 0 auto;
+    flex-direction: column;
+}
+.detail{
+    flex: 4;
+}
+.list{
+    flex: 2;
+}
