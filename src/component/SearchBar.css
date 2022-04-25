@@ -24,3 +24,25 @@
   border: none;
  
 }
+.items{
+    border: 2px solid rgb(197, 194, 194);
+     margin: 10px;    
+    display:flex; 
+    justify-content: space-between;
+    align-items: center;
+      padding: 10px;
+}
+.title{
+   font-size:1.2rem;
+   font-weight:bold;
+   flex: 1;
+}
+.snippet{
+    flex: 5;
+     border: 2px solid rgb(105, 195, 218);
+     border-radius: 5px;
+}
+.time{
+    flex: 1;
+    margin-left: 5px;
+}
