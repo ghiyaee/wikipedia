@@ -4,20 +4,27 @@ import "./SearchBar.css"
 const SearchBar = () => {
     const [value, setValue] = useState('adel')
     const [respons, setRespons] = useState([]);
-    const onFormHandel = (e) => {
-        e.preventDefault()
-    }
     const search = async () => {
         const { data } = await Request.get('api.php', {
             params: {
                 srsearch: value
             }
         });
-        if (data) {
+        if (data) 
+        {
             setRespons(data.query.search)
         }
     };
-    useEffect(() => {search()}, [value])
+    useEffect(() => {
+        const timeoutid = setTimeout(() => { 
+            if (value) {  
+                search()
+            }
+        }, 1000)
+        return () => {
+            clearTimeout(timeoutid)
+        }
+    }, [value])
     
     const onInPutHadel = (e) => {
         setValue(e.target.value)
@@ -35,15 +42,14 @@ const SearchBar = () => {
                     {el.title}
                 </div >
                 <div className="snippet">
-                      {el.snippet}  
+                    <span dangerouslySetInnerHTML={{__html:el.snippet}}></span>
                 </div>
                 <div className="time">
                     {el.timestamp}
                 </div>
-                
-                <div>
-                   
-                    <i className="close link teal icon circular small inverted " onClick={() => onDeleteItem(index)}></i>
+                <div className="buttons">
+                    <a className=" button" href={`https://en.wikipedia.org?curid=${el.pageid}`}>GO</a>
+                    <i className="close link red icon " onClick={() => onDeleteItem(index)}></i>
                 </div>
              
             </div>
@@ -53,7 +59,7 @@ const SearchBar = () => {
     return (
         <>
             <div className="search-bar">
-                <form onSubmit={onFormHandel}>
+                <form >
                     <div className="field">
                         <div>
                             <i className="wikipedia w massive teal icon"></i>
