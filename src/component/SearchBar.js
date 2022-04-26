@@ -20,6 +20,9 @@ const SearchBar = () => {
             if (value) {  
                 search()
             }
+            else {
+                setRespons([])
+            }
         }, 1000)
         return () => {
             clearTimeout(timeoutid)
